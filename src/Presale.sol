@@ -1,6 +1,6 @@
 // Create a token presale smart contract
 
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
 import "./interfaces/IERC20.sol";
