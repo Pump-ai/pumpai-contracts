@@ -12,7 +12,7 @@ contract PumpAiTokenTest is Test {
     }
 
     function test_Balance() public {
-        assertEq(token.balanceOf(address(this)), 2005000 * 10**token.decimals());
+        assertEq(token.balanceOf(address(this)), 2500000000 * 10**token.decimals());
     }
 
     function test_Transfer() public {
@@ -21,7 +21,7 @@ contract PumpAiTokenTest is Test {
     }
 
     function test_Burn() public {
-        token.burn(2005000 * 10**token.decimals());
+        token.burn(2500000000 * 10**token.decimals());
         
         assertEq(token.balanceOf(address(this)), 0);
     }

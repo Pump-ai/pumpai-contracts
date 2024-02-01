@@ -8,8 +8,8 @@ import "./interfaces/IERC20.sol";
 contract Presale {
     address public owner;
     uint256 public deadline;
+    uint256 public price = 125000; // 1 BNB = 125000 tokens
     IERC20 public token;
-
 
     constructor(address _tokenAddress, uint256 _deadline) {
         owner = msg.sender;
@@ -17,13 +17,18 @@ contract Presale {
         token = IERC20(_tokenAddress);
     }
 
+    function updatePrice(uint256 _price) public {
+        require(msg.sender == owner);
+        price = _price;
+    }
+
     function buy() public payable {
-        // The amount of tokens should be less than the amount of tokens in the presale
-        require(msg.value * 1000 <= token.balanceOf(address(this)), "Not enough tokens in presale");
+        // The amount of tokens should be less than the amount of tokens in the presale 0.000008 BNB/token
+        require(msg.value * price <= token.balanceOf(address(this)), "Not enough tokens in the presale");
         require(msg.value >= 0.001 ether, "Minimum amount is 0.001 BNB");
         require(block.timestamp < deadline, "Deadline has passed");
 
-        token.transfer(msg.sender, msg.value * 1000);
+        token.transfer(msg.sender, msg.value * price);
     }
 
     function withdraw() public {

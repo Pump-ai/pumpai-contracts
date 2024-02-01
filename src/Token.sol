@@ -11,6 +11,6 @@ contract Token is ERC20, ERC20Burnable, Ownable {
         ERC20("Pump.ai", "PUMPAI")
         Ownable(initialOwner)
     {
-        _mint(msg.sender, 2005000 * 10 ** decimals());
+        _mint(msg.sender, 2500000000 * 10 ** decimals());
     }
 }

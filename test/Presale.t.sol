@@ -16,11 +16,11 @@ contract PresaleTest is Test {
         presale = new Presale(address(token), block.timestamp + 100000);
 
         // Transfer all tokens to presale
-        token.transfer(address(presale), 2005000 * 10**token.decimals());
+        token.transfer(address(presale), 2500000000 * 10**token.decimals());
     }
 
     function test_balanceOf() public {
-        assertEq(token.balanceOf(address(presale)), 2005000 * 10**token.decimals());
+        assertEq(token.balanceOf(address(presale)), 2500000000 * 10**token.decimals());
     }
 
     function test_Owner() public {
@@ -36,7 +36,7 @@ contract PresaleTest is Test {
         // 1 BNB = 1000 tokens
         presale.buy{value: 1 ether}();
         
-        assertEq(token.balanceOf(address(this)), 1000 * 10**token.decimals());
+        assertEq(token.balanceOf(address(this)), 125000 * 10**token.decimals());
     }
 
     function test_Withdraw() public {
@@ -48,7 +48,11 @@ contract PresaleTest is Test {
 
     function test_WithdrawToken() public {
         presale.withdrawToken();
-        assertEq(token.balanceOf(address(this)), 2005000 * 10**token.decimals());
+        assertEq(token.balanceOf(address(this)), 2500000000 * 10**token.decimals());
     }
 
+    function test_UpdatePrice() public {
+        presale.updatePrice(1000);
+        assertEq(presale.price(), 1000);
+    }
 }
