@@ -8,7 +8,7 @@ import "./interfaces/IERC20.sol";
 contract Presale {
     address public owner;
     uint256 public deadline;
-    uint256 public price = 125000; // 1 BNB = 125000 tokens
+    uint256 public price = 1300000; // 1 BNB = 1,300,000 tokens
     IERC20 public token;
 
     constructor(address _tokenAddress, uint256 _deadline) {

@@ -36,7 +36,7 @@ contract PresaleTest is Test {
         // 1 BNB = 1000 tokens
         presale.buy{value: 1 ether}();
         
-        assertEq(token.balanceOf(address(this)), 125000 * 10**token.decimals());
+        assertEq(token.balanceOf(address(this)), 1300000 * 10**token.decimals());
     }
 
     function test_Withdraw() public {
